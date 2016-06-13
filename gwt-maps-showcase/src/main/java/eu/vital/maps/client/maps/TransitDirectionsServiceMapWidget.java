@@ -114,6 +114,8 @@ public class TransitDirectionsServiceMapWidget extends Composite {
   }
 
   private void drawRandomDirections() {
+	  
+	  
     /* Compute a direction with random from, to */
     LatLng origin = LatLng.newInstance(Math.random() * (MAX_LAT - MIN_LAT) + MIN_LAT, Math.random()
         * (MAX_LON - MIN_LON) + MIN_LON);

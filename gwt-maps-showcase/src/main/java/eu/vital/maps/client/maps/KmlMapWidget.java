@@ -77,6 +77,7 @@ public class KmlMapWidget extends Composite {
   }
 
   private void drawMap() {
+	  
     LatLng center = LatLng.newInstance(49.496675, -102.65625);
     MapOptions opts = MapOptions.newInstance();
     opts.setZoom(4);

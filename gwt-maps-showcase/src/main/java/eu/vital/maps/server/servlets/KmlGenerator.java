@@ -23,14 +23,21 @@ package eu.vital.maps.server.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@SuppressWarnings("serial")
-public class KmlGenerator extends HttpServlet {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import eu.vital.maps.server.inmemoryqueue.TrafficEventsConsumer;
+
+@Controller
+public class KmlGenerator {//extends HttpServlet {
   
   private String[] example;
+  
+  @Autowired
+  private TrafficEventsConsumer trafficEventsConsumer;
 
   /**
    * GET request - (no POST request below, that would need to be added)
@@ -39,7 +46,8 @@ public class KmlGenerator extends HttpServlet {
    * @param response
    * @throws IOException
    */
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException  {
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+	  System.out.println(trafficEventsConsumer.peekTheMostImportantEvent());
     drawHtml(request, response);
   }
 
